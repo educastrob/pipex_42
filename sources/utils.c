@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:04:35 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/15 18:00:44 by edcastro         ###   ########.fr       */
+/*   Created: 2023/11/15 17:56:06 by edcastro          #+#    #+#             */
+/*   Updated: 2023/11/15 17:59:37 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-# include "libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/wait.h>
+void	free_strs(char **strs)
+{
+	int	i;
 
-// utils
-void	free_strs(char **strs);
-void	is_error(char *str);
-void	cant_find_cmd(int fd, int *pipefd, char **cmd);
+	i = 0;
+	while (strs[i] != NULL)
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+}
 
-#endif
+void	is_error(char *str)
+{
+	perror(str);
+	exit(EXIT_FAILURE);
+}
+
+void	cant_find_cmd(int fd, int *pipefd, char **cmd)
+{	
+	close(pipefd[0]);
+	close(pipefd[1]);
+	close(fd);
+	free_strs(cmd);
+	write(2, "Command not found\n", 18);
+	exit(EXIT_FAILURE);
+}

@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:16:07 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/08 17:43:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:02:27 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@ int	main(int ac, char **av)
 	int		pipefd[2];
 	char	buf;
 
-	
-	if (ac != 5)
+	pipe(pipefd[2]);
+	pid = fork();
+	if (av != 5)
 	{
-		fprintf(stderr, "invalid arguments");
+		perror("Error");
 		return (1);
 	}
+	if (pid == 0)
+	{
+		close(pipefd[1]);
+		dup2(pipefd[1], STDOUT_FILENO);
+	}
+	
 	
 }

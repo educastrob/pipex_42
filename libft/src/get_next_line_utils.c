@@ -6,13 +6,13 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:01:53 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/06 13:01:53 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:44:54 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-void	*free_strs(char **buffer, char *line)
+void	*free_strs_gnl(char **buffer, char *line)
 {
 	free(*buffer);
 	*buffer = NULL;

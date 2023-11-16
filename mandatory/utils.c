@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:56:06 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/15 17:59:37 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/11/15 21:11:08 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	is_error(char *str)
 }
 
 void	cant_find_cmd(int fd, int *pipefd, char **cmd)
-{	
+{
 	close(pipefd[0]);
 	close(pipefd[1]);
 	close(fd);

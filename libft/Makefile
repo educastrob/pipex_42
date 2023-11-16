@@ -6,7 +6,7 @@
 #    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 11:59:01 by edcastro          #+#    #+#              #
-#    Updated: 2023/11/06 11:59:02 by edcastro         ###   ########.fr        #
+#    Updated: 2023/11/15 20:39:43 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC 	:= $(SRCDIR)/ft_isalpha.c $(SRCDIR)/ft_isdigit.c $(SRCDIR)/ft_isalnum.c \
 		$(SRCDIR)/ft_strrchr.c $(SRCDIR)/ft_strncmp.c $(SRCDIR)/ft_memchr.c \
 		$(SRCDIR)/ft_memcmp.c $(SRCDIR)/ft_strnstr.c $(SRCDIR)/ft_atoi.c \
 		$(SRCDIR)/ft_calloc.c $(SRCDIR)/ft_strdup.c $(SRCDIR)/ft_substr.c \
-		$(SRCDIR)/ft_strjoin.c $(SRCDIR)/ft_strtrim.c $(SRCDIR)/ft_split.c \
+		$(SRCDIR)/ft_strjoin.c $(SRCDIR)/ft_strjoinf.c $(SRCDIR)/ft_strtrim.c $(SRCDIR)/ft_split.c \
 		$(SRCDIR)/ft_itoa.c $(SRCDIR)/ft_strmapi.c $(SRCDIR)/ft_striteri.c \
 		$(SRCDIR)/ft_putchar_fd.c $(SRCDIR)/ft_putstr_fd.c $(SRCDIR)/ft_putendl_fd.c \
 		$(SRCDIR)/ft_putnbr_fd.c $(SRCDIR)/ft_lstnew.c $(SRCDIR)/ft_lstadd_front.c \

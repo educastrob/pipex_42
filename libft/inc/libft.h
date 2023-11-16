@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:57:56 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/06 13:06:05 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:44:14 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoinf(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -91,7 +92,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 int		ft_lastchar(char *line);
 int		ft_linelen(char *s);
-void	*free_strs(char **buffer, char *line);
+void	*free_strs_gnl(char **buffer, char *line);
 void	update_buffer(char *buffer);
 /*	ft_printf	*/
 int		ft_printf(const char *format, ...);

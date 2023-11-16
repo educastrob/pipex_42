@@ -1,0 +1,8 @@
+total 44
+drwxr-xr-x 2 edcastro candidate  4096 Nov 15 23:51 bonus
+-rw-r--r-- 1 edcastro candidate     0 Nov 15 23:54 infile
+drwxr-xr-x 6 edcastro candidate  4096 Nov 16 01:05 libft
+-rw-r--r-- 1 edcastro candidate  3385 Nov 15 23:53 Makefile
+drwxr-xr-x 2 edcastro candidate  4096 Nov 16 01:05 mandatory
+-rw-r--r-- 1 edcastro candidate     0 Nov 15 23:54 outfile
+-rwxr-xr-x 1 edcastro candidate 25720 Nov 16 01:05 pipex

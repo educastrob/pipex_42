@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoinf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:00:33 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/15 20:38:51 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:52:45 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoinf(char const *s1, char const *s2)
 {
 	int		len;
 	char	*strs;
@@ -41,5 +41,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	strs = ft_strcat(strs, (char *)s1);
 	strs = ft_strcat(strs, (char *)s2);
+	free((void *)s1);
 	return (strs);
 }

@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:02:00 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/06 13:02:00 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:46:32 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ char	*get_next_line(int fd)
 	{
 		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (free_strs(&buffer[fd], line));
+			return (free_strs_gnl(&buffer[fd], line));
 		buffer[fd][bytes_read] = 0;
 		line = append_buffer_to_line(buffer[fd], line);
 	}
 	if (buffer[fd] && *buffer[fd] == 0)
-		free_strs(&buffer[fd], NULL);
+		free_strs_gnl(&buffer[fd], NULL);
 	if (line && *line == 0)
-		free_strs(&line, NULL);
+		free_strs_gnl(&line, NULL);
 	return (line);
 }

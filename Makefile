@@ -3,28 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: educastro <educastro@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 14:04:30 by edcastro          #+#    #+#              #
-#    Updated: 2023/11/15 23:53:26 by edcastro         ###   ########.fr        #
+#    Updated: 2023/12/11 15:20:08 by educastro        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
-# NAME_BONUS = pipex_bonus
+NAME_BONUS = pipex_bonus
 
 SRCS = mandatory/pipex.c \
 	   mandatory/paths.c \
 	   mandatory/utils.c
 
-# SRCS_BONUS = bonus/pipex_bonus.c \
-# 			 bonus/utils_bonus.c \
-# 			 bonus/paths_bonus.c \
-# 			 bonus/here_doc_bonus.c
+SRCS_BONUS = bonus/pipex_bonus.c \
+ 			bonus/utils_bonus.c \
+ 			bonus/paths_bonus.c \
+# 			bonus/here_doc_bonus.c
 
 CC = clang
 OBJS = $(SRCS:.c=.o)
-# OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 FLAGS = -Wall -Wextra -Werror -I ./libft/inc/ -ggdb3
 #====================================COLORS====================================#
 NOC            = \033[0m
@@ -79,14 +79,14 @@ create_progressbar:
 	@echo 'echo -n " "' >> .progressbar
 	@chmod 777 .progressbar
 
-# bonus: $(OBJS_BONUS)
-# 		@rm .progressbar
-# 		make -C libft
-# 		$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) libft/libft.a
+bonus: $(OBJS_BONUS)
+		@rm .progressbar
+ 		make -C libft
+ 		$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) libft/libft.a
 
 clean:
 	make clean -C libft
-#	rm -f $(OBJS_BONUS)
+	rm -f $(OBJS_BONUS)
 	rm -f $(OBJS)
 
 fclean: clean
@@ -96,5 +96,4 @@ fclean: clean
 
 re: fclean all
 
-.SILENT: 
 .PHONY: all clean fclean re create_progressbar

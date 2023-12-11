@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:04:35 by edcastro          #+#    #+#             */
-/*   Updated: 2023/12/11 17:28:46 by educastro        ###   ########.fr       */
+/*   Created: 2023/12/11 14:39:29 by educastro         #+#    #+#             */
+/*   Updated: 2023/12/11 17:30:26 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include "../libft/inc/libft.h"
 # include <sys/stat.h> // open access
@@ -24,13 +24,31 @@
 # include <stdlib.h> // free
 # include <string.h> // strerror
 
-//paths.c
+# define READ 0
+# define WRITE 1
+
+typedef struct	s_pipex
+{
+	int		nb_cmds;
+	int		fd[2];
+	int		pipe_a[2];
+	int		pipe_b[2];
+	int		here_doc;
+	pid_t	pid;
+	char	**cmd;
+	char	*path;
+	int		index;
+}				t_pipex;
+
+// paths_bonus.c
 char	**get_paths(char **envp);
 char	*path(char **envp, char *cmd);
 
-// utils.c
+// utils_bonus.c
+void	is_error(char *str, t_pipex *d);
 void	free_strs(char **strs);
-void	is_error(char *str);
-void	cant_find_cmd(int fd, int *pipefd, char **cmd);
+void	cant_find_cmd(char **cmd, t_pipex *d);
+void	close_all(t_pipex *d);
+void	closefd(t_pipex *d);
 
 #endif

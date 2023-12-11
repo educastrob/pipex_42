@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:55:24 by educastro         #+#    #+#             */
-/*   Updated: 2023/12/11 17:30:38 by educastro        ###   ########.fr       */
+/*   Updated: 2023/12/11 17:57:45 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,12 @@ void	here_doc(char *delimiter, t_pipex *d)
 		unlink(".heredoc_tmp");
 		is_error("heredoc error", d);
 	}
+}
+
+int	check_heredoc(char *here_doc)
+{
+	if (here_doc && !ft_strncmp("here_doc", here_doc, 8))
+		return (1);
+	else
+		return (0);
 }

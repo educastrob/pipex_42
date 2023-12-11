@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:56:06 by edcastro          #+#    #+#             */
-/*   Updated: 2023/12/11 17:37:39 by educastro        ###   ########.fr       */
+/*   Updated: 2023/12/11 18:02:26 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,25 @@ void	cant_find_cmd(char **cmd, t_pipex *d)
 
 void	closefd(t_pipex *d)
 {
-	if (d->idx == 0)
+	if (d->index == 0)
 	{
 		close(d->fd[0]);
 		close(d->pipe_b[WRITE]);
 	}
-	else if (d->idx == d->nb_cmds)
+	else if (d->index == d->nb_cmds)
 	{
 		close(d->fd[1]);
-		if (d->idx % 2 == 0)
+		if (d->index % 2 == 0)
 			close(d->pipe_b[WRITE]);
 		else
 			close(d->pipe_a[WRITE]); 
 	}
-	else if (d->idx % 2 == 0)
+	else if (d->index % 2 == 0)
 	{
 		close(d->pipe_a[READ]);
     	close(d->pipe_b[WRITE]);
 	}
-	else if (d->idx % 2 != 0)
+	else if (d->index % 2 != 0)
 	{
 		close(d->pipe_b[READ]);
 		close(d->pipe_a[WRITE]);
@@ -69,7 +69,7 @@ void	closefd(t_pipex *d)
 
 void	close_all(t_pipex *d)
 {
-	if (d->idx > 1)
+	if (d->index > 1)
 	{
 		if (d->pipe_a[READ] != -1)
 			close(d->pipe_a[READ]);

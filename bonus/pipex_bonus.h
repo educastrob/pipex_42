@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:04:35 by edcastro          #+#    #+#             */
-/*   Updated: 2023/12/11 17:37:40 by educastro        ###   ########.fr       */
+/*   Updated: 2023/12/11 17:58:21 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ typedef struct	s_pipex
 	char	*path;
 	int		index;
 }				t_pipex;
+
+//here_doc_bonus.c
+void	here_doc(char *delimiter, t_pipex *d);
+int		check_heredoc(char *here_doc);
 
 // paths_bonus.c
 char	**get_paths(char **envp);

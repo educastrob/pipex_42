@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:16:07 by edcastro          #+#    #+#             */
-/*   Updated: 2023/11/16 01:00:38 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/12/14 02:08:33 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	if (!envp || envp[0][0] == '\0')
 		is_error("Envp error");
-	if (pipe(pipefd) < 0)	
+	if (pipe(pipefd) < 0)
 		is_error("Pipefd error");
 	pipex_process(fd, pipefd, av, envp);
 	return (0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: educastro <educastro@student.42.fr>        +#+  +:+       +#+         #
+#    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 14:04:30 by edcastro          #+#    #+#              #
-#    Updated: 2023/12/11 15:20:08 by educastro        ###   ########.fr        #
+#    Updated: 2023/12/14 01:34:23 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = mandatory/pipex.c \
 SRCS_BONUS = bonus/pipex_bonus.c \
  			bonus/utils_bonus.c \
  			bonus/paths_bonus.c \
-# 			bonus/here_doc_bonus.c
+			bonus/here_doc_bonus.c
 
 CC = clang
 OBJS = $(SRCS:.c=.o)
@@ -81,8 +81,8 @@ create_progressbar:
 
 bonus: $(OBJS_BONUS)
 		@rm .progressbar
- 		make -C libft
- 		$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) libft/libft.a
+		make -C libft
+		$(CC) $(FLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) libft/libft.a
 
 clean:
 	make clean -C libft

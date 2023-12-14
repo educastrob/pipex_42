@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:04:35 by edcastro          #+#    #+#             */
-/*   Updated: 2023/12/11 17:28:46 by educastro        ###   ########.fr       */
+/*   Updated: 2023/12/14 02:13:10 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <stdlib.h> // free
 # include <string.h> // strerror
 
-//paths.c
+// paths.c
 char	**get_paths(char **envp);
 char	*path(char **envp, char *cmd);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:04:35 by edcastro          #+#    #+#             */
-/*   Updated: 2023/12/11 17:58:21 by educastro        ###   ########.fr       */
+/*   Updated: 2023/12/14 02:13:49 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,16 @@
 # define READ 0
 # define WRITE 1
 
-typedef struct	s_pipex
-{
-	int		nb_cmds;
-	int		fd[2];
-	int		pipe_a[2];
-	int		pipe_b[2];
-	int		here_doc;
-	pid_t	pid;
-	char	**cmd;
-	char	*path;
-	int		index;
-}				t_pipex;
-
-//here_doc_bonus.c
-void	here_doc(char *delimiter, t_pipex *d);
-int		check_heredoc(char *here_doc);
+// here_doc_bonus.c
+void	here_doc(char *delimiter, int ac);
 
 // paths_bonus.c
-char	**get_paths(char **envp);
-char	*path(char **envp, char *cmd);
+char	*get_path(char *cmd, char **envp);
+void	execute(char *argv, char **envp);
 
 // utils_bonus.c
-void	is_error(char *str, t_pipex *d);
 void	free_strs(char **strs);
-void	cant_find_cmd(char **cmd, t_pipex *d);
-void	close_all(t_pipex *d);
-void	closefd(t_pipex *d);
+void	is_error(char *str);
+void	usage(void);
 
 #endif

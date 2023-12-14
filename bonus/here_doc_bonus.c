@@ -3,49 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 16:55:24 by educastro         #+#    #+#             */
-/*   Updated: 2023/12/11 17:57:45 by educastro        ###   ########.fr       */
+/*   Created: 2023/12/14 01:33:36 by edcastro          #+#    #+#             */
+/*   Updated: 2023/12/14 02:06:58 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	here_doc(char *delimiter, t_pipex *d)
+static void	writing_doc(char *delimiter, char *line, int *fd)
 {
-	int		here_doc;
-	char	*line;
-
-	line = NULL;
-	here_doc = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (here_doc < 0)
-		is_error("heredoc error", d);
+	close(fd[READ]);
 	while (1)
 	{
-		write(1, "here_doc > ", 11);
+		write(1, "here_doc> ", 10);
 		line = get_next_line(0);
-		if (!ft_strncmp(line, delimiter, ft_strlen(delimiter)))
-		{
-			free(line);
-			break ;
-		}
-		ft_putstr_fd(line, here_doc);
+		if (ft_strncmp(line, delimiter, ft_strlen(delimiter)) == 0)
+			exit(EXIT_SUCCESS);
+		ft_putstr_fd(line, fd[WRITE]);
 		free(line);
-	}
-	close(here_doc);
-	d->fd[0] = open(".heredoc_tmp", O_RDONLY);
-	if (d->fd[0] < 0)
-	{
-		unlink(".heredoc_tmp");
-		is_error("heredoc error", d);
 	}
 }
 
-int	check_heredoc(char *here_doc)
+void	here_doc(char *delimiter, int ac)
 {
-	if (here_doc && !ft_strncmp("here_doc", here_doc, 8))
-		return (1);
+	pid_t	reader;
+	int		fd[2];
+	char	*line;
+
+	line = NULL;
+	if (ac < 6)
+		usage();
+	if (pipe(fd) == -1)
+		is_error("Pipe error!");
+	reader = fork();
+	if (reader == 0)
+		writing_doc(delimiter, line, fd);
 	else
-		return (0);
+	{
+		close(fd[WRITE]);
+		dup2(fd[READ], STDIN_FILENO);
+		wait(NULL);
+	}
 }

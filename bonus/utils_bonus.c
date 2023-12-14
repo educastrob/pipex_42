@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:56:06 by edcastro          #+#    #+#             */
-/*   Updated: 2023/12/11 18:02:26 by educastro        ###   ########.fr       */
+/*   Updated: 2023/12/14 02:10:02 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,72 +25,17 @@ void	free_strs(char **strs)
 	free(strs);
 }
 
-void	is_error(char *str, t_pipex *d)
+void	is_error(char *str)
 {
-	(void)d;
 	perror(str);
 	exit(EXIT_FAILURE);
 }
 
-void	cant_find_cmd(char **cmd, t_pipex *d)
-{	
-	free_strs(cmd);
-	write(2, "Command not found\n", 18);
-	close_all(d);
-	exit(EXIT_FAILURE);
-}
-
-void	closefd(t_pipex *d)
+void	usage(void)
 {
-	if (d->index == 0)
-	{
-		close(d->fd[0]);
-		close(d->pipe_b[WRITE]);
-	}
-	else if (d->index == d->nb_cmds)
-	{
-		close(d->fd[1]);
-		if (d->index % 2 == 0)
-			close(d->pipe_b[WRITE]);
-		else
-			close(d->pipe_a[WRITE]); 
-	}
-	else if (d->index % 2 == 0)
-	{
-		close(d->pipe_a[READ]);
-    	close(d->pipe_b[WRITE]);
-	}
-	else if (d->index % 2 != 0)
-	{
-		close(d->pipe_b[READ]);
-		close(d->pipe_a[WRITE]);
-	}
-}
-
-void	close_all(t_pipex *d)
-{
-	if (d->index > 1)
-	{
-		if (d->pipe_a[READ] != -1)
-			close(d->pipe_a[READ]);
-		if (d->pipe_a[WRITE] != -1)
-			close(d->pipe_a[WRITE]);
-		if (d->pipe_b[READ] != -1)
-			close(d->pipe_b[READ]);
-		if (d->pipe_b[WRITE] != -1)
-			close(d->pipe_b[WRITE]);
-		if (d->fd[0] != -1)
-			close(d->fd[0]);
-		if (d->fd[1] != -1)
-			close(d->fd[1]);
-	}
-	else
-	{
-		close(d->pipe_b[READ]);
-		close(d->pipe_b[WRITE]);
-		if (d->fd[0] != -1)
-			close(d->fd[0]);
-		if (d->fd[1] != -1)
-			close(d->fd[1]);
-	}
+	ft_putstr_fd("\033[31mError: Bad argument\n\e[0m", 2);
+	ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
+	ft_putstr_fd("    ./pipex \"here_doc\" <LIMITER> <cmd> <cmd1> \
+		<...> <file>\n", 1);
+	exit(EXIT_SUCCESS);
 }
